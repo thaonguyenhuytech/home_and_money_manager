@@ -54,15 +54,13 @@
         ul { margin-bottom: 20px; }
         li { margin-bottom: 8px; }
         .privacy-content {
-            max-height: 600px;
-            overflow-y: auto;
             padding-right: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <button class="back-btn" onclick="goBack()">← Back to Support</button>
+        <button class="back-btn" id="back-btn" onclick="goBack()" style="display: none;">← Back to Support</button>
         
         <div class="language-switcher">
             <button class="language-btn" onclick="setLanguage('en')" id="btn-en">English</button>
@@ -231,9 +229,19 @@
             }
         }
 
+        function checkReferrer() {
+            const backBtn = document.getElementById('back-btn');
+            if (document.referrer && document.referrer.includes('support.html')) {
+                backBtn.style.display = 'block';
+            } else {
+                backBtn.style.display = 'none';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const detectedLang = detectLanguage();
             setLanguage(detectedLang);
+            checkReferrer();
         });
     </script>
 </body>
