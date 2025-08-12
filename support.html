@@ -14,7 +14,7 @@
             line-height: 1.6;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             background-color: #fff;
             padding: 30px;
@@ -24,6 +24,18 @@
         h1 {
             color: #1a1a1a;
             font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #1a1a1a;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #1a1a1a;
+            font-size: 18px;
+            margin-top: 25px;
             margin-bottom: 10px;
         }
         p {
@@ -68,55 +80,271 @@
         .language-btn.active {
             background: #0056b3;
         }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background: #5a6268;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .privacy-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .privacy-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .privacy-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .privacy-content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        .privacy-content::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="language-switcher">
-            <button class="language-btn" onclick="setLanguage('en')" id="btn-en">English</button>
-            <button class="language-btn" onclick="setLanguage('vi')" id="btn-vi">Tiếng Việt</button>
-        </div>
-
-        <!-- English Content -->
-        <div class="language-content" id="content-en">
-            <h1>Home And Money Manager Support</h1>
-            <p>Thank you for using Home And Money Manager! We are committed to providing you with the best possible experience. If you have any questions, feedback, or need assistance, please feel free to contact us.</p>
-
-            <h2>Contact Us</h2>
-            <div class="contact-info">
-                <p><strong>Email:</strong> <a href="mailto:thaonguyenhuytech@gmail.com">thaonguyenhuytech@gmail.com</a></p>
+        <!-- Support Page -->
+        <div class="page" id="support-page">
+            <div class="language-switcher">
+                <button class="language-btn" onclick="setLanguage('en')" id="btn-en">English</button>
+                <button class="language-btn" onclick="setLanguage('vi')" id="btn-vi">Tiếng Việt</button>
             </div>
 
-            <p>When you contact us, please include the following details to help us assist you more efficiently:</p>
-            <ul>
-                <li>Your app version</li>
-                <li>Your device model (e.g., iPhone 15)</li>
-                <li>A detailed description of your issue</li>
-            </ul>
+            <!-- English Content -->
+            <div class="language-content" id="content-en">
+                <h1>Home And Money Manager Support</h1>
+                <p>Thank you for using Home And Money Manager! We are committed to providing you with the best possible experience. If you have any questions, feedback, or need assistance, please feel free to contact us.</p>
 
-            <h2>Privacy Policy</h2>
-            <p>For information about our data collection and usage, please review our <a href="https://www.privacypolicies.com/live/98995399-b628-4aa6-9f00-192580bcdec2">Privacy Policy</a>.</p>
-        </div>
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:thaonguyenhuytech@gmail.com">thaonguyenhuytech@gmail.com</a></p>
+                </div>
 
-        <!-- Vietnamese Content -->
-        <div class="language-content" id="content-vi">
-            <h1>Hỗ trợ ứng dụng Quản Lý Chi Tiêu và Đồ Dùng</h1>
-            <p>Cảm ơn bạn đã sử dụng ứng dụng Quản Lý Chi Tiêu và Đồ Dùng! Chúng tôi cam kết mang đến cho bạn trải nghiệm tốt nhất. Nếu bạn có bất kỳ câu hỏi, phản hồi hoặc cần hỗ trợ, vui lòng liên hệ với chúng tôi.</p>
+                <p>When you contact us, please include the following details to help us assist you more efficiently:</p>
+                <ul>
+                    <li>Your app version</li>
+                    <li>Your device model (e.g., iPhone 15)</li>
+                    <li>A detailed description of your issue</li>
+                </ul>
 
-            <h2>Liên Hệ</h2>
-            <div class="contact-info">
-                <p><strong>Email:</strong> <a href="mailto:thaonguyenhuytech@gmail.com">thaonguyenhuytech@gmail.com</a></p>
+                <h2>Privacy Policy</h2>
+                <p>For information about our data collection and usage, please review our <a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a>.</p>
             </div>
 
-            <p>Khi liên hệ với chúng tôi, vui lòng bao gồm các thông tin sau để chúng tôi có thể hỗ trợ bạn hiệu quả hơn:</p>
-            <ul>
-                <li>Phiên bản ứng dụng của bạn</li>
-                <li>Model thiết bị của bạn (ví dụ: iPhone 15)</li>
-                <li>Mô tả chi tiết về vấn đề bạn gặp phải</li>
-            </ul>
+            <!-- Vietnamese Content -->
+            <div class="language-content" id="content-vi">
+                <h1>Hỗ trợ ứng dụng Quản Lý Chi Tiêu và Đồ Dùng</h1>
+                <p>Cảm ơn bạn đã sử dụng ứng dụng Quản Lý Chi Tiêu và Đồ Dùng! Chúng tôi cam kết mang đến cho bạn trải nghiệm tốt nhất. Nếu bạn có bất kỳ câu hỏi, phản hồi hoặc cần hỗ trợ, vui lòng liên hệ với chúng tôi.</p>
 
-            <h2>Chính Sách Bảo Mật</h2>
-            <p>Để biết thông tin về việc thu thập và sử dụng dữ liệu của chúng tôi, vui lòng xem <a href="https://www.privacypolicies.com/live/98995399-b628-4aa6-9f00-192580bcdec2">Chính Sách Bảo Mật</a>.</p>
+                <h2>Liên Hệ</h2>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:thaonguyenhuytech@gmail.com">thaonguyenhuytech@gmail.com</a></p>
+                </div>
+
+                <p>Khi liên hệ với chúng tôi, vui lòng bao gồm các thông tin sau để chúng tôi có thể hỗ trợ bạn hiệu quả hơn:</p>
+                <ul>
+                    <li>Phiên bản ứng dụng của bạn</li>
+                    <li>Model thiết bị của bạn (ví dụ: iPhone 15)</li>
+                    <li>Mô tả chi tiết về vấn đề bạn gặp phải</li>
+                </ul>
+
+                <h2>Chính Sách Bảo Mật</h2>
+                <p>Để biết thông tin về việc thu thập và sử dụng dữ liệu của chúng tôi, vui lòng xem <a href="#" onclick="showPrivacyPolicy()">Chính Sách Bảo Mật</a>.</p>
+            </div>
+        </div>
+
+        <!-- Privacy Policy Page -->
+        <div class="page" id="privacy-page">
+            <button class="back-btn" onclick="showSupportPage()">← Back to Support</button>
+            
+            <div class="language-switcher">
+                <button class="language-btn" onclick="setLanguage('en')" id="privacy-btn-en">English</button>
+                <button class="language-btn" onclick="setLanguage('vi')" id="privacy-btn-vi">Tiếng Việt</button>
+            </div>
+
+            <!-- English Privacy Policy -->
+            <div class="language-content privacy-content" id="privacy-content-en">
+                <h1>Privacy Policy for Home And Money Manager</h1>
+                <p><strong>Last updated:</strong> August 10, 2025</p>
+
+                <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+
+                <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the Privacy Policy Generator.</p>
+
+                <h2>Interpretation and Definitions</h2>
+                <h3>Interpretation</h3>
+                <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+
+                <h3>Definitions</h3>
+                <p>For the purposes of this Privacy Policy:</p>
+                <ul>
+                    <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
+                    <li><strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</li>
+                    <li><strong>Application</strong> refers to Home And Money Manager, the software program provided by the Company.</li>
+                    <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Home And Money Manager.</li>
+                    <li><strong>Country</strong> refers to: Vietnam</li>
+                    <li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</li>
+                    <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
+                    <li><strong>Service</strong> refers to the Application.</li>
+                    <li><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company.</li>
+                    <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.</li>
+                    <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
+                </ul>
+
+                <h2>Collecting and Using Your Personal Data</h2>
+                <h3>Types of Data Collected</h3>
+                <h4>Personal Data</h4>
+                <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
+                <ul>
+                    <li>First name and last name</li>
+                    <li>Usage Data</li>
+                </ul>
+
+                <h4>Usage Data</h4>
+                <p>Usage Data is collected automatically when using the Service. Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+
+                <h4>Information Collected while Using the Application</h4>
+                <p>While using Our Application, in order to provide features of Our Application, We may collect, with Your prior permission:</p>
+                <ul>
+                    <li>Pictures and other information from your Device's camera and photo library</li>
+                </ul>
+
+                <h2>Use of Your Personal Data</h2>
+                <p>The Company may use Personal Data for the following purposes:</p>
+                <ul>
+                    <li><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</li>
+                    <li><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service.</li>
+                    <li><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased.</li>
+                    <li><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication.</li>
+                    <li><strong>To provide You</strong> with news, special offers and general information about other goods, services and events.</li>
+                    <li><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</li>
+                    <li><strong>For business transfers:</strong> We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets.</li>
+                    <li><strong>For other purposes:</strong> We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service.</li>
+                </ul>
+
+                <h2>Retention of Your Personal Data</h2>
+                <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our legal agreements and policies.</p>
+
+                <h2>Security of Your Personal Data</h2>
+                <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
+
+                <h2>Children's Privacy</h2>
+                <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us.</p>
+
+                <h2>Changes to this Privacy Policy</h2>
+                <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page. We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the "Last updated" date at the top of this Privacy Policy.</p>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, You can contact us:</p>
+                <ul>
+                    <li>By email: thaonguyenhuytech@gmail.com</li>
+                    <li>By phone number: +84338388439</li>
+                </ul>
+            </div>
+
+            <!-- Vietnamese Privacy Policy -->
+            <div class="language-content privacy-content" id="privacy-content-vi">
+                <h1>Chính Sách Bảo Mật cho Ứng Dụng Quản Lý Chi Tiêu và Đồ Dùng</h1>
+                <p><strong>Cập nhật lần cuối:</strong> 10 tháng 8 năm 2025</p>
+
+                <p>Chính Sách Bảo Mật này mô tả các chính sách và thủ tục của chúng tôi về việc thu thập, sử dụng và tiết lộ thông tin của Bạn khi Bạn sử dụng Dịch vụ và cho Bạn biết về quyền riêng tư của Bạn và cách luật pháp bảo vệ Bạn.</p>
+
+                <p>Chúng tôi sử dụng Dữ liệu Cá nhân của Bạn để cung cấp và cải thiện Dịch vụ. Bằng việc sử dụng Dịch vụ, Bạn đồng ý với việc thu thập và sử dụng thông tin theo Chính Sách Bảo Mật này.</p>
+
+                <h2>Giải Thích và Định Nghĩa</h2>
+                <h3>Giải Thích</h3>
+                <p>Những từ có chữ cái đầu được viết hoa có ý nghĩa được định nghĩa theo các điều kiện sau. Các định nghĩa sau sẽ có cùng ý nghĩa bất kể chúng xuất hiện ở dạng số ít hay số nhiều.</p>
+
+                <h3>Định Nghĩa</h3>
+                <p>Vì mục đích của Chính Sách Bảo Mật này:</p>
+                <ul>
+                    <li><strong>Tài khoản</strong> có nghĩa là một tài khoản duy nhất được tạo cho Bạn để truy cập Dịch vụ của chúng tôi hoặc các phần của Dịch vụ của chúng tôi.</li>
+                    <li><strong>Công ty liên kết</strong> có nghĩa là một thực thể kiểm soát, được kiểm soát bởi hoặc dưới sự kiểm soát chung với một bên.</li>
+                    <li><strong>Ứng dụng</strong> đề cập đến Ứng Dụng Quản Lý Chi Tiêu và Đồ Dùng, chương trình phần mềm được cung cấp bởi Công ty.</li>
+                    <li><strong>Công ty</strong> (được gọi là "Công ty", "Chúng tôi", "Chúng tôi" hoặc "Của chúng tôi" trong Thỏa thuận này) đề cập đến Ứng Dụng Quản Lý Chi Tiêu và Đồ Dùng.</li>
+                    <li><strong>Quốc gia</strong> đề cập đến: Việt Nam</li>
+                    <li><strong>Thiết bị</strong> có nghĩa là bất kỳ thiết bị nào có thể truy cập Dịch vụ như máy tính, điện thoại di động hoặc máy tính bảng kỹ thuật số.</li>
+                    <li><strong>Dữ liệu Cá nhân</strong> là bất kỳ thông tin nào liên quan đến một cá nhân được xác định hoặc có thể xác định được.</li>
+                    <li><strong>Dịch vụ</strong> đề cập đến Ứng dụng.</li>
+                    <li><strong>Nhà cung cấp Dịch vụ</strong> có nghĩa là bất kỳ cá nhân hoặc pháp nhân nào xử lý dữ liệu thay mặt Công ty.</li>
+                    <li><strong>Dữ liệu Sử dụng</strong> đề cập đến dữ liệu được thu thập tự động, được tạo ra bởi việc sử dụng Dịch vụ hoặc từ chính cơ sở hạ tầng Dịch vụ.</li>
+                    <li><strong>Bạn</strong> có nghĩa là cá nhân truy cập hoặc sử dụng Dịch vụ, hoặc công ty, hoặc thực thể pháp lý khác thay mặt cho cá nhân đó truy cập hoặc sử dụng Dịch vụ.</li>
+                </ul>
+
+                <h2>Thu Thập và Sử Dụng Dữ Liệu Cá Nhân Của Bạn</h2>
+                <h3>Các Loại Dữ Liệu Được Thu Thập</h3>
+                <h4>Dữ Liệu Cá Nhân</h4>
+                <p>Khi sử dụng Dịch vụ của chúng tôi, chúng tôi có thể yêu cầu Bạn cung cấp cho chúng tôi một số thông tin nhận dạng cá nhân có thể được sử dụng để liên hệ hoặc xác định Bạn. Thông tin nhận dạng cá nhân có thể bao gồm, nhưng không giới hạn ở:</p>
+                <ul>
+                    <li>Tên và họ</li>
+                    <li>Dữ liệu sử dụng</li>
+                </ul>
+
+                <h4>Dữ Liệu Sử Dụng</h4>
+                <p>Dữ liệu sử dụng được thu thập tự động khi sử dụng Dịch vụ. Dữ liệu sử dụng có thể bao gồm thông tin như địa chỉ Giao thức Internet của Thiết bị của Bạn (ví dụ: địa chỉ IP), loại trình duyệt, phiên bản trình duyệt, các trang của Dịch vụ của chúng tôi mà Bạn truy cập, thời gian và ngày tháng Bạn truy cập, thời gian dành cho những trang đó, định danh thiết bị duy nhất và dữ liệu chẩn đoán khác.</p>
+
+                <h4>Thông Tin Được Thu Thập Khi Sử Dụng Ứng Dụng</h4>
+                <p>Khi sử dụng Ứng dụng của chúng tôi, để cung cấp các tính năng của Ứng dụng của chúng tôi, chúng tôi có thể thu thập, với sự cho phép trước của Bạn:</p>
+                <ul>
+                    <li>Hình ảnh và thông tin khác từ camera và thư viện ảnh của Thiết bị của Bạn</li>
+                </ul>
+
+                <h2>Sử Dụng Dữ Liệu Cá Nhân Của Bạn</h2>
+                <p>Công ty có thể sử dụng Dữ liệu Cá nhân cho các mục đích sau:</p>
+                <ul>
+                    <li><strong>Để cung cấp và duy trì Dịch vụ của chúng tôi</strong>, bao gồm việc giám sát việc sử dụng Dịch vụ của chúng tôi.</li>
+                    <li><strong>Để quản lý Tài khoản của Bạn:</strong> để quản lý việc đăng ký của Bạn như một người dùng của Dịch vụ.</li>
+                    <li><strong>Để thực hiện hợp đồng:</strong> việc phát triển, tuân thủ và thực hiện hợp đồng mua bán cho các sản phẩm, mặt hàng hoặc dịch vụ mà Bạn đã mua.</li>
+                    <li><strong>Để liên hệ với Bạn:</strong> Để liên hệ với Bạn qua email, cuộc gọi điện thoại, SMS, hoặc các hình thức giao tiếp điện tử tương đương khác.</li>
+                    <li><strong>Để cung cấp cho Bạn</strong> tin tức, ưu đãi đặc biệt và thông tin chung về các hàng hóa, dịch vụ và sự kiện khác.</li>
+                    <li><strong>Để quản lý yêu cầu của Bạn:</strong> Để tham dự và quản lý yêu cầu của Bạn đối với chúng tôi.</li>
+                    <li><strong>Để chuyển giao kinh doanh:</strong> Chúng tôi có thể sử dụng thông tin của Bạn để đánh giá hoặc thực hiện việc sáp nhập, thoái vốn, tái cấu trúc, tổ chức lại, giải thể, hoặc bán hoặc chuyển giao khác một phần hoặc tất cả tài sản của chúng tôi.</li>
+                    <li><strong>Cho các mục đích khác:</strong> Chúng tôi có thể sử dụng thông tin của Bạn cho các mục đích khác, chẳng hạn như phân tích dữ liệu, xác định xu hướng sử dụng, xác định hiệu quả của các chiến dịch quảng cáo của chúng tôi và để đánh giá và cải thiện Dịch vụ của chúng tôi.</li>
+                </ul>
+
+                <h2>Lưu Trữ Dữ Liệu Cá Nhân Của Bạn</h2>
+                <p>Công ty sẽ chỉ lưu trữ Dữ liệu Cá nhân của Bạn trong thời gian cần thiết cho các mục đích được nêu trong Chính Sách Bảo Mật này. Chúng tôi sẽ lưu trữ và sử dụng Dữ liệu Cá nhân của Bạn ở mức độ cần thiết để tuân thủ các nghĩa vụ pháp lý của chúng tôi, giải quyết tranh chấp và thực thi các thỏa thuận và chính sách pháp lý của chúng tôi.</p>
+
+                <h2>Bảo Mật Dữ Liệu Cá Nhân Của Bạn</h2>
+                <p>Bảo mật Dữ liệu Cá nhân của Bạn là quan trọng đối với chúng tôi, nhưng hãy nhớ rằng không có phương pháp truyền tải qua Internet hoặc phương pháp lưu trữ điện tử nào là 100% an toàn. Mặc dù chúng tôi cố gắng sử dụng các phương tiện được chấp nhận về mặt thương mại để bảo vệ Dữ liệu Cá nhân của Bạn, chúng tôi không thể đảm bảo tính bảo mật tuyệt đối của nó.</p>
+
+                <h2>Quyền Riêng Tư Của Trẻ Em</h2>
+                <p>Dịch vụ của chúng tôi không nhắm đến bất kỳ ai dưới 13 tuổi. Chúng tôi không cố ý thu thập thông tin nhận dạng cá nhân từ bất kỳ ai dưới 13 tuổi. Nếu Bạn là cha mẹ hoặc người giám hộ và Bạn biết rằng con của Bạn đã cung cấp cho chúng tôi Dữ liệu Cá nhân, vui lòng liên hệ với chúng tôi.</p>
+
+                <h2>Thay Đổi Chính Sách Bảo Mật Này</h2>
+                <p>Chúng tôi có thể cập nhật Chính Sách Bảo Mật của chúng tôi theo thời gian. Chúng tôi sẽ thông báo cho Bạn về bất kỳ thay đổi nào bằng cách đăng Chính Sách Bảo Mật mới trên trang này. Chúng tôi sẽ cho Bạn biết qua email và/hoặc thông báo nổi bật trên Dịch vụ của chúng tôi, trước khi thay đổi có hiệu lực và cập nhật ngày "Cập nhật lần cuối" ở đầu Chính Sách Bảo Mật này.</p>
+
+                <h2>Liên Hệ Chúng Tôi</h2>
+                <p>Nếu bạn có bất kỳ câu hỏi nào về Chính Sách Bảo Mật này, Bạn có thể liên hệ với chúng tôi:</p>
+                <ul>
+                    <li>Qua email: thaonguyenhuytech@gmail.com</li>
+                    <li>Qua số điện thoại: +84338388439</li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -133,10 +361,14 @@
             });
             
             // Show selected language content
-            document.getElementById('content-' + lang).classList.add('active');
+            document.querySelectorAll('#content-' + lang + ', #privacy-content-' + lang).forEach(content => {
+                content.classList.add('active');
+            });
             
-            // Add active class to selected button
-            document.getElementById('btn-' + lang).classList.add('active');
+            // Add active class to selected buttons
+            document.querySelectorAll('#btn-' + lang + ', #privacy-btn-' + lang).forEach(btn => {
+                btn.classList.add('active');
+            });
             
             // Update HTML lang attribute
             document.documentElement.lang = lang;
@@ -165,10 +397,29 @@
             return 'en';
         }
 
-        // Initialize language on page load
+        function showPrivacyPolicy() {
+            document.getElementById('support-page').classList.remove('active');
+            document.getElementById('privacy-page').classList.add('active');
+            
+            // Set language for privacy page
+            const currentLang = localStorage.getItem('preferred-language') || detectLanguage();
+            setLanguage(currentLang);
+        }
+
+        function showSupportPage() {
+            document.getElementById('privacy-page').classList.remove('active');
+            document.getElementById('support-page').classList.add('active');
+            
+            // Set language for support page
+            const currentLang = localStorage.getItem('preferred-language') || detectLanguage();
+            setLanguage(currentLang);
+        }
+
+        // Initialize language and show support page on page load
         document.addEventListener('DOMContentLoaded', function() {
             const detectedLang = detectLanguage();
             setLanguage(detectedLang);
+            document.getElementById('support-page').classList.add('active');
         });
     </script>
 </body>
