@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your App Name] Support</title>
+    <title>Home And Money Manager Support</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -43,27 +43,133 @@
         a:hover {
             text-decoration: underline;
         }
+        .language-content {
+            display: none;
+        }
+        .language-content.active {
+            display: block;
+        }
+        .language-switcher {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .language-btn {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .language-btn:hover {
+            background: #0056b3;
+        }
+        .language-btn.active {
+            background: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Home And Money Manager Support</h1>
-        <p>Thank you for using Home And Money Manager! We are committed to providing you with the best possible experience. If you have any questions, feedback, or need assistance, please feel free to contact us.</p>
-
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:thaonguyenhuytech@gmail.com">thaonguyenhuytech@gmail.com</a></p>
+        <div class="language-switcher">
+            <button class="language-btn" onclick="setLanguage('en')" id="btn-en">English</button>
+            <button class="language-btn" onclick="setLanguage('vi')" id="btn-vi">Tiếng Việt</button>
         </div>
 
-        <p>When you contact us, please include the following details to help us assist you more efficiently:</p>
-        <ul>
-            <li>Your app version</li>
-            <li>Your device model (e.g., iPhone 15)</li>
-            <li>A detailed description of your issue</li>
-        </ul>
+        <!-- English Content -->
+        <div class="language-content" id="content-en">
+            <h1>Home And Money Manager Support</h1>
+            <p>Thank you for using Home And Money Manager! We are committed to providing you with the best possible experience. If you have any questions, feedback, or need assistance, please feel free to contact us.</p>
 
-        <h2>Privacy Policy</h2>
-        <p>For information about our data collection and usage, please review our <a href="https://www.privacypolicies.com/live/98995399-b628-4aa6-9f00-192580bcdec2">Privacy Policy</a>.</p>
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:thaonguyenhuytech@gmail.com">thaonguyenhuytech@gmail.com</a></p>
+            </div>
+
+            <p>When you contact us, please include the following details to help us assist you more efficiently:</p>
+            <ul>
+                <li>Your app version</li>
+                <li>Your device model (e.g., iPhone 15)</li>
+                <li>A detailed description of your issue</li>
+            </ul>
+
+            <h2>Privacy Policy</h2>
+            <p>For information about our data collection and usage, please review our <a href="https://www.privacypolicies.com/live/98995399-b628-4aa6-9f00-192580bcdec2">Privacy Policy</a>.</p>
+        </div>
+
+        <!-- Vietnamese Content -->
+        <div class="language-content" id="content-vi">
+            <h1>Hỗ Trợ Home And Money Manager</h1>
+            <p>Cảm ơn bạn đã sử dụng Home And Money Manager! Chúng tôi cam kết mang đến cho bạn trải nghiệm tốt nhất. Nếu bạn có bất kỳ câu hỏi, phản hồi hoặc cần hỗ trợ, vui lòng liên hệ với chúng tôi.</p>
+
+            <h2>Liên Hệ</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:thaonguyenhuytech@gmail.com">thaonguyenhuytech@gmail.com</a></p>
+            </div>
+
+            <p>Khi liên hệ với chúng tôi, vui lòng bao gồm các thông tin sau để chúng tôi có thể hỗ trợ bạn hiệu quả hơn:</p>
+            <ul>
+                <li>Phiên bản ứng dụng của bạn</li>
+                <li>Model thiết bị của bạn (ví dụ: iPhone 15)</li>
+                <li>Mô tả chi tiết về vấn đề bạn gặp phải</li>
+            </ul>
+
+            <h2>Chính Sách Bảo Mật</h2>
+            <p>Để biết thông tin về việc thu thập và sử dụng dữ liệu của chúng tôi, vui lòng xem <a href="https://www.privacypolicies.com/live/98995399-b628-4aa6-9f00-192580bcdec2">Chính Sách Bảo Mật</a>.</p>
+        </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            // Hide all language content
+            document.querySelectorAll('.language-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected language content
+            document.getElementById('content-' + lang).classList.add('active');
+            
+            // Add active class to selected button
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Store preference in localStorage
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        function detectLanguage() {
+            // Check if user has a stored preference
+            const storedLang = localStorage.getItem('preferred-language');
+            if (storedLang) {
+                return storedLang;
+            }
+            
+            // Detect browser language
+            const browserLang = navigator.language || navigator.userLanguage;
+            const langCode = browserLang.toLowerCase().substring(0, 2);
+            
+            // Check if Vietnamese
+            if (langCode === 'vi') {
+                return 'vi';
+            }
+            
+            // Default to English
+            return 'en';
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const detectedLang = detectLanguage();
+            setLanguage(detectedLang);
+        });
+    </script>
 </body>
 </html>
